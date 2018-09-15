@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 import os
 
 
-BookID = 39304  #BookID
-Lenth = 11  #章节数量
+BookID = 6953  #BookID
+Lenth = 1262  #章节数量
 
 def Get_Co_ID(url):
     html_doc = requests.get(url).text
