@@ -4,16 +4,20 @@ Created on Fri Sep 14 21:52:24 2018
 
 @author: fuwen
 """
-from pydub import AudioSegment
 import os,re,time
+from pydub import AudioSegment
+
+
+start = 47 #开始截断秒数
+end = 38 #最终截断秒数
 
 def CutMp3(Mp3File):    
     filename = re.findall(r"(.*?)\.mp3|MP3", Mp3File)
     if filename:
         filename[0] += '.mp3'
         mp3 = AudioSegment.from_mp3(Mp3File) 
-        mp3 = mp3[30000:len(mp3)-25000]
-        mp3.export('cut_'+Mp3File,format="mp3", bitrate="128k")
+        mp3 = mp3[start*1000:len(mp3)-end*1000]
+        mp3.export('cut_'+Mp3File,format="mp3", bitrate="64k")
         
 if __name__=='__main__':
     process_start = time.time()
@@ -21,6 +25,6 @@ if __name__=='__main__':
         file_start = time.time()
         CutMp3(Mp3File)
         file_end = time.time()
-        print('File %s runs %0.2f seconds.' % (Mp3File, (file_end - file_start)))
+        print('File %s runs %0.2f seconds,' % (Mp3File, (file_end - file_start)))
     process_end = time.time()
     print('process %s runs %0.2f seconds.' % ('process', (process_end - process_start)))
