@@ -1,56 +1,65 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Sep 11 10:49:36 2018
+Created on Fri Dec 14 21:07:11 2018
 
 @author: fuwen
 """
-import requests
-import re
-import time
-import json
-from bs4 import BeautifulSoup
-import os
+from subprocess import call
+import requests, base64, json, time, os, re
 
+BookID = 4473
 
-BookID = 6953  #BookID
-Lenth = 1262  #章节数量
+account = '3512060971@bccto.me'
+password = 'f0384319'
 
-def Get_Co_ID(url):
-    html_doc = requests.get(url).text
-    soup = BeautifulSoup(html_doc, 'lxml')
-    columns = soup.find_all('li',class_ = 'clearfix')
-    for column in columns:
-        title = column.get_text()
-        title = title.split()[1]
-        sectionid = re.findall('section(\d+)',str(column))[1]
-        Mp3_url = 'http://www.lrts.me/ajax/path/4/%s/%s' %(BookID,sectionid)   
-        html_doc = requests.get(Mp3_url).text
-        data = json.loads(html_doc)['data']
-        with open('videos/lrts.txt','a',encoding='utf-8') as f:
-            f.writelines([data,',',title,'\n'])
+FilePath = r'D:\有声小说\死灵法师_闲人初'
+#使用IDM下载
+IdmPath = 'C:\idman_lv\IDMan.exe'
+def IdmDownLoad(DownloadUrl, Mp3Name):
+    call([IdmPath, '/d',DownloadUrl,'/p',FilePath,'/f',Mp3Name,'/n'])
+    
+def ChangeFileName(filename):
+    filename = filename.replace('\\','')
+    filename = filename.replace('/','')
+    filename = filename.replace('：','')
+    filename = filename.replace('*','')
+    filename = filename.replace('“','')
+    filename = filename.replace('”','')
+    filename = filename.replace('<','')
+    filename = filename.replace('>','')
+    filename = filename.replace('|','')
+    filename = filename.replace('?','？')
+    filename = filename.replace('（','(')
+    filename = filename.replace(chr(65279),'') # UTF-8+BOM
+#    print(ord(filename[0]))
+    filename = filename.split('(')[0]
+    return filename
 
-def rename():
-    urls = open('videos/lrts.txt','r+',encoding='UTF-8')
-    urls = urls.readlines()
-    for url in urls :
-        url = url.split(',')
-        name_1 = url[1]
-        name_1 = name_1.strip()
-        Url = url[0]
-        name_2 = Url.split('/')
-        name_2 = name_2[len(name_2) - 1]
-        with open('videos/rename.bat','a',encoding='UTF-8') as videos:
-            videos.writelines(['REN "',name_2,'" "',name_1,'.mp3\n'])
-        with open('videos/url.txt','a',encoding='UTF-8') as url_txt:
-            url_txt.writelines([Url,'\n'])
+Mp3ListJsonUrl = 'http://m.lrts.me/ajax/getBookMenu?bookId=%d&pageNum=1&pageSize=5000&sortType=0'%(BookID)
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'}
+ba_password = base64.b64encode(bytes(password,'ascii'))
+LoginUrl = 'http://m.lrts.me/ajax/logon'
+conn = requests.session()
+PostData = {"account":account,"pwd":ba_password}
+rep = conn.post(LoginUrl, data=PostData)
+Mp3ListJson = conn.get(Mp3ListJsonUrl, headers = headers)
+Mp3ListJson = json.loads(Mp3ListJson.text)
+Mp3List = Mp3ListJson['list']
+Mp3NameList = [Mp3dict['name'] for Mp3dict in Mp3List]
+Mp3NameList = [ChangeFileName(i) for i in Mp3NameList]
 
-
-if not os.path.exists('videos'):
-    os.mkdir('videos')
-with open('videos/rename.bat','a',encoding='UTF-8') as videos:
-    videos.writelines(['CHCP 65001','\n\n'])
-for lenth in range(1,Lenth,10) :
-    url = 'http://www.lrts.me/ajax/playlist/2/%d/%d/next' %(BookID,lenth)
-    Get_Co_ID(url)
-    time.sleep(1)
-rename()
+AlreadyDown = [FileName.replace('.mp3','') for FileName in os.listdir(FilePath)]
+Count = 0
+for Mp3Name in Mp3NameList :
+    Count+=1
+    if Mp3Name in AlreadyDown :
+        continue
+    Mp3JsonUrl = 'http://m.lrts.me/ajax/getPlayPath?entityId=%d&entityType=3&opType=1&sections=[%d]&type=0'%(BookID,Count)
+    Mp3Url = conn.get(Mp3JsonUrl, headers = headers)
+    try :
+        Mp3Url = json.loads(Mp3Url.text)['list'][0]['path']
+        print('正在下载%s……'%Mp3Name)
+        IdmDownLoad(Mp3Url,Mp3Name+'.mp3')
+        time.sleep(2)
+    except :
+        print('%s，未购买，跳过……'%Mp3Name)
