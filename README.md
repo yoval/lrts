@@ -30,7 +30,7 @@
 
 
 
-![](img\1.png)
+![](img/1.png)
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-![mark](img\GIF.gif)
+![mark](img/GIF.gif)
 
 
 
