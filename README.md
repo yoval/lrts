@@ -1,6 +1,6 @@
 # 懒人听书下载
 
-#### 
+#### 嘤嘤嘤
 
 由于淘宝2块钱可以买到60听书券，针对此可重构代码：
 
@@ -30,7 +30,7 @@
 
 
 
-![](D:\code\lrts\img\1.png)
+![](img\1.png)
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-![mark](D:\code\lrts\img\GIF.gif)
+![mark](img\GIF.gif)
 
 
 
