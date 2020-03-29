@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Dec 14 21:07:11 2018
-
 @author: fuwen
 """
 from subprocess import call
 import requests, base64, json, time, os, re
 
-BookID = 4473
+BookID = 40689
 
-account = '3512060971@bccto.me'
-password = 'f0384319'
+account = 'info@fuwenyue.com'
+password = '&QaQKgHW6V4&Juod'
 
-FilePath = r'D:\有声小说\死灵法师_闲人初'
+FilePath = r'C:\Users\Administrator\Desktop\有声小说'
 #使用IDM下载
-IdmPath = 'C:\idman_lv\IDMan.exe'
+IdmPath = 'C:\Program Files (x86)\Internet Download Manager\IDMan.exe'
 def IdmDownLoad(DownloadUrl, Mp3Name):
     call([IdmPath, '/d',DownloadUrl,'/p',FilePath,'/f',Mp3Name,'/n'])
     
@@ -38,10 +37,16 @@ def ChangeFileName(filename):
 Mp3ListJsonUrl = 'http://m.lrts.me/ajax/getBookMenu?bookId=%d&pageNum=1&pageSize=5000&sortType=0'%(BookID)
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'}
 ba_password = base64.b64encode(bytes(password,'ascii'))
-LoginUrl = 'http://m.lrts.me/ajax/logon'
+LoginUrl = 'https://m.lrts.me/ajax/logon'
 conn = requests.session()
 PostData = {"account":account,"pwd":ba_password}
 rep = conn.post(LoginUrl, data=PostData)
+repJson = json.loads(rep.text)
+msg = repJson['msg']
+if msg =='账号或密码错误':
+    print('帐号或密码错误，仅下载免费部分')
+else:
+    print('登录成功，下载该帐号免费部分及购买部分')
 Mp3ListJson = conn.get(Mp3ListJsonUrl, headers = headers)
 Mp3ListJson = json.loads(Mp3ListJson.text)
 Mp3List = Mp3ListJson['list']
