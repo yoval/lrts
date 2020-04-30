@@ -30,7 +30,7 @@
 
 
 
-![](img/1.png)
+![mark](http://imgs.bizha.top/bizha/20200430/1y1jzTqJRYdL.png?imageslim)
 
 
 
@@ -38,9 +38,4 @@
 
 
 
-![mark](img/GIF.gif)
-
-
-
-
-
+![mark](http://imgs.bizha.top/bizha/20200430/6PDY3POH0kT0.gif)

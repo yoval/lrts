@@ -4,7 +4,7 @@ Created on Fri Dec 14 21:07:11 2018
 @author: fuwen
 """
 from subprocess import call
-import requests, base64, json, time, os, re
+import os,requests, base64, json, time
 
 BookID = 40689
 
