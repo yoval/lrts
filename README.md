@@ -1,3 +1,5 @@
+转了一个简陋的`exe`文件，提前在`account.txt`配置用户名、密码、下载路径。
+https://fuwenyue.lanzous.com/iaxw0je
 # 懒人听书下载
 
 #### 嘤嘤嘤
