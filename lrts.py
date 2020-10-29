@@ -53,7 +53,7 @@ Mp3List = Mp3ListJson['list']
 Mp3NameList = [Mp3dict['name'] for Mp3dict in Mp3List]
 Mp3NameList = [ChangeFileName(i) for i in Mp3NameList]
 
-AlreadyDown = [FileName.replace('.mp3','') for FileName in os.listdir(FilePath)]
+AlreadyDown = [FileName.replace('.mp3','',1) for FileName in os.listdir(FilePath)]
 Count = 0
 for Mp3Name in Mp3NameList :
     Count+=1
