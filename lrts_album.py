@@ -57,7 +57,7 @@ for SingalDict in AudioList:
     AudioName = SingalDict['name']
     AudioName = ChangeFileName(AudioName)
     print('正在尝试下载 %s ……'%AudioName)
-    AlreadyDown = [FileName.replace('.mp3','') for FileName in os.listdir(FilePath)]
+    AlreadyDown = [FileName.replace('.mp3','',1) for FileName in os.listdir(FilePath)]
     if AudioName in AlreadyDown:
         print('目录已有该文件，跳过下载。')
         continue
