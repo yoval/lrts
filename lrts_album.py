@@ -48,7 +48,7 @@ def ChangeFileName(filename):
     filename = filename.replace(chr(65279),'') # UTF-8+BOM
     #filename = filename.split('(')[0]
     return filename
-
+AlreadyDown = [FileName.replace('.mp3','',1) for FileName in os.listdir(FilePath)]
 AlbumUrl = 'https://m.lrts.me/ajax/getAlbumAudios?ablumnId=%d&sortType=0'%AlbumId
 AlbumJson = conn.get(AlbumUrl)
 AlbumJson = AlbumJson.json()
@@ -57,7 +57,6 @@ for SingalDict in AudioList:
     AudioName = SingalDict['name']
     AudioName = ChangeFileName(AudioName)
     print('正在尝试下载 %s ……'%AudioName)
-    AlreadyDown = [FileName.replace('.mp3','',1) for FileName in os.listdir(FilePath)]
     if AudioName in AlreadyDown:
         print('目录已有该文件，跳过下载。')
         continue
