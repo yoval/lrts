@@ -1,3 +1,7 @@
+20210621更新：
+已重制：https://github.com/yoval/LanrenTingshu
+- 增加了对Aria2的调用。
+---
 20201029更新：
 增加lrts_album.py,下载album
 lrts.py下载book
