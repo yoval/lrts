@@ -1,5 +1,5 @@
 20210621更新：
-已重制：https://github.com/yoval/LanrenTingshu
+已整合：https://github.com/yoval/LanrenTingshu
 - 增加了对Aria2的调用。
 ---
 20201029更新：
