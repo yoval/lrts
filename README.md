@@ -1,6 +1,12 @@
-20210621更新：
-已整合：https://github.com/yoval/LanrenTingshu
-- 增加了对Aria2的调用。
+## 20210623更新：
+
+### 代码是为淘宝2元60听书券构建，已经过时。偶然发现拼多多上有2元30天的VIP激活码（仅能够使用一次），为此再次重构：https://github.com/yoval/LanrenTingshu
+
+
+
+
+
+
 ---
 20201029更新：
 增加lrts_album.py,下载album
@@ -11,8 +17,6 @@ lrts.py下载book
 转了一个简陋的`exe`文件，提前在`account.txt`配置用户名、密码、下载路径。
 https://fuwenyue.lanzous.com/iaxw0je
 # 懒人听书下载
-
-#### 嘤嘤嘤
 
 由于淘宝2块钱可以买到60听书券，针对此可重构代码：
 
