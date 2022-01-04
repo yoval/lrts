@@ -1,57 +1,25 @@
-## 20210623更新：
+# 说明
 
-### 代码是为淘宝2元60听书券构建，已经过时。偶然发现拼多多上有2元30天的VIP激活码（仅能够使用一次），为此再次重构：https://github.com/yoval/LanrenTingshu
+- 直接用Python下载的功能已经打包成exe文件，https://fuwenyue.lanzoup.com/i1bmYydzg3g 。
 
+![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413212479461641321247929.png)
 
+- 这个脚本调用Aira2下载，希望调用IDM移步至`https://github.com/yoval/LanrenTingshu` ，两个脚本几乎是一样的。
 
+### 默认Aira2
+  
+  可选工具：Aira2懒人包 → https://fuwenyue.lanzoup.com/iOgbZwjvori
 
+### 自定义Aira2（含远程）
 
+		默认配置是**Qdown** → https://lightzhan.xyz/index.php/qdown/ ，需要推送至VPS服务器、Motrix、Xdown等基于Aira2的工具请自行修改配置（代码第58、59行）
 
----
-20201029更新：
-增加lrts_album.py,下载album
-lrts.py下载book
-暂未整合
+		![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413170610251641316228362.png)
 
----
-转了一个简陋的`exe`文件，提前在`account.txt`配置用户名、密码、下载路径。
-https://fuwenyue.lanzous.com/iaxw0je
-# 懒人听书下载
+<br/>
 
-由于淘宝2块钱可以买到60听书券，针对此可重构代码：
+## 下载测试
 
-1.淘宝购买帐号密码后登陆懒人听书网页，自行购买书籍；
+<br/>
 
-2.设置完毕后运行，下载免费内容+该帐号已购买内容；
-
-3.若无已购买内容，仅下载该书籍**免费部分**；
-
-##### 注：
-
-多帐号操作：
-
-某小说共有400集，其中1-200集为免费收听，300-400为付费章节。
-
-可操作方式：A帐号购买 200-300集，B帐号购买300-400集。将A帐号密码输入后运行，下载1-300集，然后切换为B帐号继续下载300-400集，会自动跳过已下载章节（基于已下载文件夹）。
-
----
-
-#### 说明
-
-逐个抓取懒人听书链接并**直接下载**，登录帐号密码后**可下载已购买内容**。
-
-需设置内容：
-
-书籍ID、帐号密码、文件下载路径、IDM路径、IDM下载时间间隔（time.sleep）。
-
-
-
-![mark](http://imgs.bizha.top/bizha/20200430/1y1jzTqJRYdL.png?imageslim)
-
-
-
-
-
-
-
-![mark](http://imgs.bizha.top/bizha/20200430/6PDY3POH0kT0.gif)
+![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413151092241641315109208.png)
