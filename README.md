@@ -4,7 +4,8 @@
 
 ![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413212479461641321247929.png)
 
-- 这个脚本调用Aira2下载，希望调用IDM移步至`https://github.com/yoval/LanrenTingshu` ，两个脚本几乎是一样的。
+
+**这个脚本主要调用Aira2下载懒人听书免费+已付费音频文件，希望调用IDM移步至`https://github.com/yoval/LanrenTingshu` ，两个脚本几乎是一样的。**
 
 ### 默认Aira2
 
