@@ -1,6 +1,6 @@
 ## 说明
 
-做了个gui版的懒人听书，下载地址： https://pc.woozooo.com/mydisk.php
+做了个gui版的懒人听书，下载地址： https://fuwenyue.lanzouf.com/iOgbZwjvori 
 
 ![](https://gitee.com/fuwenyue/tuchuang/raw/master/16489197596551648919758791.png)
 
