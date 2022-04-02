@@ -1,5 +1,23 @@
 ## 说明
 
+做了个gui版的懒人听书，下载地址： https://pc.woozooo.com/mydisk.php
+
+![](https://gitee.com/fuwenyue/tuchuang/raw/master/16489197596551648919758791.png)
+
+支持`内置下载器` 与 `Aira2` ，内置下载器 会很卡~
+
+Aria2超级懒人包下载地址： https://fuwenyue.lanzouf.com/iOgbZwjvori ，
+
+基于Aira2的Qdown：https://lightzhan.xyz/index.php/qdown/ 。
+
+
+
+Aria2演示 ：
+
+![](https://gitee.com/fuwenyue/tuchuang/raw/master/16489213296511648921328740.png)
+
+
+
 - 直接用Python下载的功能已经打包成exe文件，https://fuwenyue.lanzoup.com/i1bmYydzg3g 。
 
 ![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413212479461641321247929.png)
