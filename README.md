@@ -1,46 +1,20 @@
-## 说明
+# 说明
 
-做了个gui版的懒人听书，下载地址： https://fuwenyue.lanzouf.com/iBsRB02jwi3a
+[懒人听书](https://www.lrts.me/) 下载工具gui 版，可下载**登录账号已购买内容**（vip账号可下载vip限免）。
 
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/16489197596551648919758791.png)
+已打包为exe格式：https://fuwenyue.lanzouf.com/ij2bC039n4ej
 
-支持`内置下载器` 与 `Aira2` ，内置下载器 会很卡~
+#### 1、使用方法：
 
-Aria2超级懒人包下载地址： https://fuwenyue.lanzouf.com/iOgbZwjvori ，
-
-基于Aira2的Qdown：https://lightzhan.xyz/index.php/qdown/ 。
+![](https://gitee.com/fuwenyue/tuchuang/raw/master/1650035253716lrts.png)
 
 
+默认使用 motrix 的端口，不会使用Aira2的直接用 https://motrix.app/zh-CN 即可。
 
-Aria2演示 ：
+#### 2、安装依赖包
 
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/16489213296511648921328740.png)
+`pip install -r requirements.txt`
 
+#### 3、打包
 
-
-- 直接用Python下载的功能已经打包成exe文件，https://fuwenyue.lanzoup.com/i1bmYydzg3g 。
-
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413212479461641321247929.png)
-
-
-**这个脚本主要调用Aira2下载懒人听书免费+已付费音频文件，希望调用IDM移步至`https://github.com/yoval/LanrenTingshu` ，两个脚本几乎是一样的。**
-
-### 默认Aira2
-
-可选工具：Aira2懒人包 → https://fuwenyue.lanzoup.com/iOgbZwjvori
-
-### 自定义Aira2（含远程）
-
-
-默认配置是**Qdown** → https://lightzhan.xyz/index.php/qdown/ ，需要推送至VPS服务器、Motrix、Xdown等基于Aira2的工具请自行修改配置（代码第58、59行）
-
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413170610251641316228362.png)
-
-
-<br/>
-
-## 下载测试
-
-<br/>
-
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/utools/16413151092241641315109208.png)
+`Pyinstaller -F -w lrts.py -i favicon.ico -p download.py`
