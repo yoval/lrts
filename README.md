@@ -1,20 +1,49 @@
 # 说明
 
-[懒人听书](https://www.lrts.me/) 下载工具gui 版，可下载**登录账号已购买内容**（vip账号可下载vip限免）。
+很久之前的项目，最近频繁收到`issues` 。图省事把gui等删了重写……
 
-已打包为exe格式：https://fuwenyue.lanzouf.com/ij2bC039n4ej
+#### 配置说明：
 
-#### 1、使用方法：
+仅修改`config.ini`即可，需配合Air2作为下载工具。如果用的是[Motrix](https://motrix.app/zh-CN/) ，则无需修改Air2→JsonRpcUrl。通常`.py`文件无需修改。
 
-![](https://gitee.com/fuwenyue/tuchuang/raw/master/1650035253716lrts.png)
+```
+#书籍信息
+[BookUrl]
+#书籍链接，自动识别album与book
+BookUrl = https://www.lrts.me/book/6953
+
+#登录信息
+[LoginData]
+account = info@fuwenyue.com
+password = &QaQKgHW6V4&JuoO
+
+#下载范围
+[DownLoadRange]
+#开始集数
+Start = 1020
+#结束集数
+Stop = 1024
+
+#Air2 配置（默认Motrix）
+[Air2]
+#Air2 RPC
+JsonRpcUrl = http://localhost:16800/jsonrpc
+#下载至目录
+Outfloder = E:\下载目录
+#下载间隔
+Delay = 10
+
+```
 
 
-默认使用 motrix 的端口，不会使用Aira2的直接用 https://motrix.app/zh-CN 即可。
 
-#### 2、安装依赖包
+![](images\lanrentingshu.png)
 
-`pip install -r requirements.txt`
 
-#### 3、打包
 
-`Pyinstaller -F -w lrts.py -i favicon.ico -p download.py`
+![](images\spyder.png)
+
+
+
+![motrix](images\motrix.png)
+
