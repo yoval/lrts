@@ -84,11 +84,17 @@ if 'book' in BookUrl:
     ListUrl = 'https://m.lrts.me/ajax/getBookMenu?bookId=%s&pageNum=1&pageSize=5000&sortType=0'%BookID
     LenDetail = conn.get(ListUrl,headers=headers).json()
     AudioList = LenDetail['list']
-    if len(AudioList)==1000:
-        time.sleep(5)
-        ListUrl = 'https://m.lrts.me/ajax/getBookMenu?bookId=%s&pageNum=2&pageSize=5000&sortType=0'%BookID
-        LenDetail = conn.get(ListUrl,headers=headers).json()
-        AudioList = AudioList + LenDetail['list']
+    page = 1
+    while True:
+        if len(AudioList) % 1000 ==0:
+            page+=1
+            print('抓取第%s页……'%page)
+            time.sleep(5)
+            ListUrl = 'https://m.lrts.me/ajax/getBookMenu?bookId=%s&pageNum=%s&pageSize=5000&sortType=0'%(BookID,page)
+            LenDetail = conn.get(ListUrl,headers=headers).json()
+            AudioList = AudioList + LenDetail['list']
+        else :
+            break
     Len = len(AudioList)        
     print('本书总共集数：%s'%Len)
     print('配置下载范围:',start,'~',stop)
